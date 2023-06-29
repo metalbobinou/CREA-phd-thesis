@@ -1,0 +1,44 @@
+\begin{table}[htb!]
+\centering
+\centerline{  % FORCE FIGURE OUTSIDE THE MARGIN !!! BUT STILL CENTERING !!!
+\begin{tabular}{ c   c   c   c  l  c  c  c  l  c  l  c  c  c  l  c  c  c  l  c  c  c  l  c }
+\specialrule{.1em}{.05em}{.05em}
+\multirow{2}{*}{} & \multirow{2}{*}{H1} & \multirow{2}{*}{H2} & \multirow{2}{*}{H3} & & \multicolumn{3}{c}{H4} & & \multirow{2}{*}{H5} & & \multicolumn{3}{c}{H6} & & \multicolumn{3}{c}{H7} & & \multicolumn{3}{c}{H8} & & \multirow{2}{*}{H9} \\
+\cline{6-8} \cline{12-14} \cline{16-18} \cline{20-22}
+                  &                     &                     &                     & &     a & b & c        & &                    &           & a & b & c        & &      a & b & c         & &      a & b & c        & &  \\
+
+\specialrule{.1em}{.05em}{.05em}
+%  & H1 & H2 & H3 & H4a & H4b & H4c &
+% H5 & H6a & H6b & H6c & H7a & H7b & H7c &
+% H8a & H8b & H8c & H9
+%
+% S1 : H1, H2, H3, H4a-b, H5, H6a-b-c, H8a-b-c
+S1 & \textbullet & \textbullet & \textbullet & &  \textbullet & \textbullet & &  &
+ \textbullet & &  \textbullet & \textbullet & \textbullet & &  & & &  &
+ \textbullet & \textbullet & \textbullet & & \\
+\hline
+% S2 : H1, H2, H3, H7b, H8a-b-c
+S2 & \textbullet & \textbullet & \textbullet & &  & & &  &
+ & &   & &  & &  & \textbullet & &  & 
+ \textbullet & \textbullet & \textbullet & & \\
+\hline
+% H1, H2, H3, H4a-b, H5, H6a-b-c, H8a-b-c
+S3 & \textbullet & \textbullet & \textbullet & &  \textbullet & \textbullet &  & & 
+ \textbullet & &  \textbullet & \textbullet & \textbullet & &  & & &  &
+ \textbullet & \textbullet & \textbullet & & \\
+\hline
+% H1, H3, H7b, H8a-b-c
+S4 & \textbullet & & \textbullet & &  & & &  &
+ & &  & &  & &  & \textbullet & &  &
+ \textbullet & \textbullet & \textbullet & & \\
+\hline
+% H1, H2, H3, H4a-b, H5, H6a-b-c, H7a-c, H8a-b-c
+S5 & \textbullet & \textbullet & \textbullet & &  \textbullet & \textbullet &  & &
+ \textbullet & &  \textbullet & \textbullet & \textbullet & &  \textbullet & & \textbullet &  &
+ \textbullet & \textbullet & \textbullet & & \\
+\specialrule{.1em}{.05em}{.05em}
+\end{tabular}
+}
+\caption{Scénarios et hypothèses visées}
+\label{table:4-Scenarios-Hypotheses}
+\end{table}

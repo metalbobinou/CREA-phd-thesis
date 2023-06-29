@@ -1,0 +1,23 @@
+[Lattice]
+5
+7
+[Objects]
+C1
+C2
+C3
+C4
+C5
+[Attributes]
+web
+php
+sql
+mysql
+apache
+http
+html
+[relation]
+0 1 0 0 1 1 1 
+1 1 0 0 0 0 0 
+0 0 1 0 0 0 1 
+0 1 1 1 1 0 0 
+1 0 0 1 0 0 0 

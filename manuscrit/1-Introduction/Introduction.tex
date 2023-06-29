@@ -1,0 +1,382 @@
+\chapter{Introduction}
+\label{chapter:Introduction}
+
+Dans ce chapitre, nous introduisons le sujet de cette thèse en expliquant succinctement les processus à forte intensité de connaissances, puis leurs concrétisations dans le contexte du domaine de l'enseignement supérieur, en particulier dans le cas de la construction d'un cours et de la réutilisation des connaissances.
+La problématique de recherche est ensuite détaillée ainsi que les hypothèses et stratégies de validation.
+
+
+\bigskip
+
+\minitoc % Creating an actual minitoc / ToC local to a chapter
+
+\newpage
+
+\section{Contexte sociétal : l'enseignement supérieur et la réutilisation des connaissances}
+\label{section:Introduction:ContexteSocietal}
+
+Le numérique un peu plus présent chaque jour, nous montre simultanément les nombreuses opportunités pour accroître notre confort et notre productivité, mais également les limites rencontrées face à certains traits humains encore difficiles à mesurer par des machines et leurs capteurs (les subtilités des jeux de mots et de l'humour, par exemple).
+Ces limites se retrouvent dans de nombreux aspects des métiers, y compris dans la gestion des processus qui a pourtant su profiter de l'automatisation croissante~\cite{weske2007business}.
+La gestion des processus métier modélise traditionnellement les tâches et activités, ainsi que leur ordonnancement, afin de décrire \textit{comment} réaliser un processus~\cite{kushnareva2016modelingFromGoalsToScenarios}.
+Cependant, des caractéristiques liées au contexte ou à l'expertise des différents participants sont difficilement capturées et représentées dans les modèles existants, rendant certains processus peu répétables en l'état.
+Ces processus en particulier ont été étudiés et font l'objet d'un champ de recherche supplémentaire dans la gestion et les systèmes d'informations : les \textit{processus à forte intensité de connaissances}, ou \textit{knowledge intensive processes} (KIP) en anglais.
+Les processus à forte intensité de connaissances sont caractérisés~\cite{di2015knowledge} par : la manipulation de connaissances (implicites ou explicites), la collaboration entre participants au processus, l'imprédictibilité du contexte et de l'ordre des activités (voire l'apparition d'activités inconnues lors de la conception du processus), l'émergence d'informations au fur et à mesure qui influent sur la décision des activités à exécuter, l'apparition de buts intermédiaires à atteindre pour mener à bien le processus, la prise en charge d'évènements parfois imprévisibles, le respect de règles et contraintes limitant les activités possibles, et enfin, la non-répétabilité due aux situations uniques.
+
+\bigskip
+
+Les processus à forte intensité de connaissances se retrouvent dans de nombreuses activités où l'usage de connaissances dans un contexte collaboratif prédomine : une réunion, par exemple, est annoncée avec un ordre du jour, mais celui-ci ne sera pas toujours respecté, voire, des points seront ajoutés à cause d'évènements inattendus se produisant entre temps ou parce que des participants auront partagé des informations importantes.
+Les processus à forte intensité de connaissances peuvent parfois se rapprocher des processus classiques (prévisibles, détaillés, et dont les états sont connus à l'avance), par exemple lors de la résolution de problèmes connus et récurrents, ou au contraire s'en éloigner totalement lorsqu'une très forte exigence de créativité est nécessaire, comme dans les productions artistiques par exemple.
+Il existe plusieurs points de vue permettant de mieux apprécier le parcours entre plusieurs activités.
+En utilisant deux points de vue sur le suivi d'un patient dans un parcours médical, on se rend compte qu'un hôpital est bel et bien géré par des processus parfaitement prévisibles, mais le patient venant en consultation ne sait pas du tout à l'avance s'il sera hospitalisé ni quels tests il devra effectuer.
+Par exemple, effectuer une radiographie s'exécute avec des techniciens de santé précis en respectant une procédure bien définie, mais le personnel de santé ne sait pas à l'avance quels tests seront nécessaires pour chaque patient.
+Cette distinction entre les points de vue \textit{processus} (la structure, l'ordre, et la connaissance en amont des activités à effectuer) et \textit{cas} (chaque instance de processus évolue différemment des autres, et dépend des personnes impliquées) illustre comment le contexte et les participants influencent le déroulement des activités.
+Là où l'hôpital gère des équipes et des machines selon des procédures précises, tout en devant s'adapter aux évènements survenant dans la société (en 2020 et 2021, il est plus probable de voir arriver des patients en détresse respiratoire, par exemple), le patient sera au contraire vu comme un cas évoluant au fur et à mesure des tests et résultats afin de l'orienter vers les spécialistes adaptés et lui fournir le traitement spécifique à sa situation.
+
+\bigskip
+
+Les caractéristiques des processus à forte intensité de connaissances soulèvent plusieurs défis concernant la gestion du flux de connaissances manipulées, l'aspect collaboratif et les décisions dépendant du contexte, l'intégration du contexte à la conception, la conformité des processus et de leurs instances, la flexibilité requise par les utilisateurs, et enfin, la réutilisation de fragments de processus~\cite{boissier2019challenges}.
+Ce dernier défi est au croisement des deux points de vue \textit{cas} et \textit{processus} car il vise à réutiliser les résultats des instances passées de processus (assimilables à des cas terminés et validés) pour aider les utilisateurs à exécuter de nouvelles instances et construire de nouveaux processus (tous les deux assimilables à de nouveaux cas).
+
+\bigskip
+
+Dans le contexte de l'enseignement supérieur, l'intégration du numérique s'effectue depuis une quinzaine d'années grâce aux \textit{innovations pédagogiques numériques} (IPN)~\cite{dulbecco2018innovations}.
+Les IPN ont permis de transformer en outils en ligne de nombreux processus administratifs utilisant auparavant des données sur support papier, personnaliser les parcours de formation en les rendant plus flexibles, mais aussi soutenir le développement de nouvelles solutions pédagogiques s'appuyant sur le numérique~\cite{dulbecco2019experimentation}.
+Comme dans toutes les organisations, intégrer complètement ou partiellement les processus à forte intensité de connaissances aux systèmes informatiques est beaucoup plus difficile que pour les processus plus classiques : la crise du COVID-19 a montré que le déploiement massif de solutions de visio-conférences est certes un soutien technique supplémentaire, mais pas une prise en charge complète de l'activité d'enseignement.
+La construction d'un cours, ou sa reconstruction lors du changement de l'enseignant responsable, est typiquement une activité impliquant d'analyser précisément le contexte dans lequel le cours doit être donné (niveau de la filière/du diplôme, autres cours dépendants des connaissances transmises aux étudiants, cours précédemment suivis par les étudiants, ...) afin de sélectionner les informations précises à transmettre parmi celles existantes dans le domaine.
+Un enseignant développant un nouveau cours, ou devant reprendre un cours existant en se l'appropriant et en le mettant à jour, doit donc s'assurer de la pertinence des sources utilisées pour le contexte qu'il vise, et sélectionner des parties réutilisables pour former un support de cours à jour, compréhensible, et utile aux étudiants.
+
+\bigskip
+
+Cette thèse présente nos travaux visant à extraire des connaissances issues de cas passés, évaluer leur pertinence, et proposer à un utilisateur de les réutiliser dans un format organisé.
+Pour cela, nous avons choisi le domaine de l'enseignement supérieur et de la recherche, et plus spécifiquement le cas d'un enseignant cherchant à construire un cours sur plusieurs séances à partir de supports de cours existants, et éventuellement en y ajoutant des articles de recherche traitant du même sujet.
+L'étude d'un domaine de recherche nécessite de maintenir une connaissance des questions et défis actuellement posés, auxquelles les contributions tentent de répondre, tout en collaborant avec l'ensemble de la communauté.
+Une grande créativité est donc requise pour poser des hypothèses et concevoir des contributions permettant de les confirmer ou infirmer.
+Lorsqu'un domaine devient suffisamment mature grâce à une somme conséquente de contributions, une diffusion de ces connaissances au-delà des experts peut se réaliser au travers de monographies ou de cours de spécialisation pour former de nouveaux experts.
+La préparation d'un cours constitue donc une synthèse des connaissances connues et vérifiées, afin de la transmettre à des personnes potentiellement peu voire non-initiées.
+Nous n'aborderons pas la façon de transmettre ces connaissances (représentant la gestion du flux de connaissances), ceci appartenant au domaine de la science de l'éducation, mais nous nous pencherons sur la façon d'extraire ces connaissances des documents existants afin d'évaluer leur pertinence vis-à-vis d'un sujet en particulier (prise en compte du contexte) et proposer une réorganisation de ces connaissances sous forme de séances de cours (réutilisation de fragments d'instances passées).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage % Clean for pictures and tables %
+\newpage   % Clean for pictures and tables %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Problématique de recherche}
+\label{section:Introduction:ProblematiqueRecherche}
+
+Les diverses crises récemment rencontrées ont mis en évidence les limites des outils mis à disposition, et plus largement les difficultés à intégrer les processus à forte intensité de connaissances aux systèmes informatiques.
+D'après la littérature~\cite{boissier2019challenges} plusieurs défis restent à relever, en particulier celui de la réutilisation de fragments de processus.
+Plusieurs travaux ont étudié ces défis et ont proposé des contributions s'adressant à plusieurs domaines d'application.
+%%%%
+Les fragments de processus~\cite{eberle2009process}\cite{eberle2010process} sont étudiés dans quelques travaux soit en s'intéressant au \textit{raisonnement à base de cas}~\cite{slade1991case}, ou \textit{Case-Based Reasoning} (CBR) en anglais, qui réutilise explicitement les cas passés~\cite{cognini2016case}, soit en reconstituant un modèle de processus avec des contraintes d'exécution locales à chaque activité~\cite{di2013mining}.
+Enfin, certains travaux~\cite{zasada2018box} génèrent des \textit{motifs} (ou \textit{patterns} en anglais) à partir de textes légaux afin de s'assurer du respect de la réglementation dans l'industrie alimentaire.
+Cette méthode s'appuie sur la rigidité des règles de rédaction des documents réglementaires pour en extraire des motifs, et exploite les expressions régulières pour s'assurer de leur respect.
+
+\bigskip
+
+Dans le cadre de l'enseignement supérieur et de la recherche, nous nous intéressons en particulier au processus de création de cours, et particulièrement à l'aide à la construction de cours à partir de supports existants.
+La préparation d'un cours exige beaucoup de temps, y compris lors de sa mise à jour pour inclure des nouveautés ou avec les dernières avancées de la recherche académique.
+Les récents évènements nous montrant également qu'il est parfois nécessaire de modifier rapidement les contenus pour s'adapter, nous proposons une méthode permettant d'utiliser des documents texte afin de mesurer leur cohérence vis-à-vis d'un sujet donné et d'en extraire une structure de séances réutilisable.
+La proposition de cette thèse vise donc à aider les enseignants à mieux gérer certains de leurs processus à forte intensité de connaissances, en particulier ceux impliqués dans le cadre de la construction d'un cours.
+Nos travaux visent donc à répondre à la question de recherche suivante :
+
+%\smallskip
+\bigskip
+
+\textbf{Comment aider un enseignant à construire un cours à partir de documents existants, et en s'appuyant sur la réutilisation de connaissances ?}
+
+%\smallskip
+\bigskip
+
+Cette question vise donc deux défis posés par les processus à forte intensité de connaissances : la réutilisation de fragments pour former des nouveaux cours, et la prise en compte du contexte au travers de la vérification de la pertinence des documents.
+Pour répondre à cette question et aux défis associés, nous posons plusieurs sous-questions de recherche et hypothèses :
+
+\bigskip
+
+\centerline{
+\begin{tabular}{c p{12cm}}
+1.a & Comment définir le contexte d'un cours ? \\
+\end{tabular}
+}
+
+\centerline{
+%\begin{tabular}{| C{0.75cm} | p{7cm} | p{6cm} |}
+\begin{NiceTabular}{| C{0.75cm} | P{7cm} | P{6cm} |}
+\hline
+H1 & Le contexte d'un cours est défini par les documents sélectionnés
+& Comparer plusieurs corpus documentaires: certains homogènes sur un seul sujet, d'autres contenant plusieurs sujets \textit{[Voir scénarios n°1-2-3-4-5]} \\
+\hline
+\end{NiceTabular}
+%\end{tabular}
+}
+
+\bigskip
+
+\centerline{
+\begin{tabular}{c p{12cm}}
+1.b & Comment extraire les termes pertinents par rapport au contexte ? \\
+\end{tabular}
+}
+
+\centerline{
+\begin{NiceTabular}{| C{0.75cm} | P{7cm} | P{6cm} |}
+\hline
+H2 & Des techniques de TAL permettent d'analyser les documents et d'extraire les termes pertinents
+& Vérifier les termes retenus par les outils de TAL une fois leurs analyses terminées, le tout sur plusieurs sujets distincts  \textit{[Voir scénarios n°1-2-3-5]} \\
+\hline
+\end{NiceTabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bigskip
+
+\vspace{0.5cm}
+
+\centerline{
+\begin{tabular}{c p{12cm}}
+2 & Comment s'assurer de la pertinence des documents sélectionnés dans le contexte visé et des termes extraits ? \\
+\end{tabular}
+}
+
+\centerline{
+\begin{NiceTabular}{| C{0.75cm} | P{7cm} | P{6cm} |}
+\hline
+H3 & L'analyse du graphe d'impact mutuel permet d'évaluer la pertinence des sous-ensembles de documents et d'identifier les écarts entre les documents
+& Comparer plusieurs corpus documentaires: des corpus homogènes sur un seul sujet doivent montrer un ensemble de documents très rapprochés ou tous aussi éloignés les uns des autres, d'autres corpus contenant plusieurs sujets doivent montrer que des documents sont plus éloignés du sujet central traité par la majorité des documents \textit{[Voir scénarios n°1-2-3-4-5]} \\
+\hline
+\end{NiceTabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bigskip
+
+\vspace{0.5cm}
+
+\centerline{
+\begin{tabular}{c p{12cm}}
+3.a & Quelles connaissances tacites sont présentes dans les documents étudiés ? \\
+\end{tabular}
+}
+
+\centerline{
+\begin{NiceTabular}{| C{0.75cm} | P{7cm} | P{6cm} |}
+\hline
+H4 & Étant donné que la rédaction de supports de cours est une activité humaine avec un objectif de transmission de connaissances sur un sujet, considérons que les connaissances tacites suivantes peuvent être extraites d'un tel support :
+& \Block{4-1}{Expliciter les liens en regroupant les termes liés et évaluer la qualité de ces regroupements, expliciter l'ordre des  regroupements et évaluer la qualité de ces regroupements \textit{[Voir scénarios n°1-3-5]}} \\
+\cline{1-2}
+H4a & Sélection de termes particuliers pour un contexte particulier visé (et non l'ensemble du champs lexical possible)
+ & \\
+\cline{1-2}
+H4b & Organisation de termes sous forme de groupes logiques (séquence, section, chapitre, ...) pour traiter un aspect particulier à la fois
+ & \\
+\cline{1-2}
+H4c & Présentation de thèmes au fur et à mesure selon un ordre précis (permettant d'assurer que les pré-requis soient abordés en premier)
+ & \\
+\hline
+\end{NiceTabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bigskip
+
+%\vspace{0.5cm}
+
+%%%%%%%%%% =====> just for a better output
+\newpage
+
+\vspace*{\fill}
+
+\centerline{
+\begin{tabular}{c p{12cm}}
+3.b & Comment extraire les connaissances tacites présentes dans les documents étudiés ? \\
+\end{tabular}
+}
+
+\centerline{
+\begin{NiceTabular}{| C{0.75cm} | P{7cm} | P{6cm} |}
+\hline
+H5 & La similarité conceptuelle permet l'extraction de connaissances tacites, en particulier les regroupements logiques de termes traitant d'un ou quelques aspects particuliers d'un sujet
+& Construire des regroupements de termes en utilisant la similarité conceptuelle, et évaluer ces regroupements \textit{[Voir scénarios n°1-3-5]} \\
+\hline
+\end{NiceTabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bigskip
+
+%\vspace{0.5cm}
+% ===> ESTHETIQUE
+\vspace*{\fill}
+
+\centerline{
+\begin{tabular}{c p{12cm}}
+4 & Comment la sélection initiale des documents peut-elle impacter les résultats d'application de la méthode CREA ? \\
+\end{tabular}
+}
+
+\centerline{
+\begin{NiceTabular}{| C{0.75cm} | P{7cm} | P{6cm} |}
+\hline
+H6 & Les résultats d'application de la méthode CREA sont exploitables par les enseignants et ne sont pas impactés par :
+& \Block{4-1}{Tester plusieurs scénarios dont les sujets, langues, et nombre de documents varient \textit{[Voir scénarios n°1-3-5]}} \\
+\cline{1-2}
+H6a & Le choix initial du sujet de cours
+& \\
+\cline{1-2}
+H6b & Le nombre de document initialement sélectionnés
+& \\
+\cline{1-2}
+H6c & La langue des documents sélectionnés
+& \\
+\hline
+\end{NiceTabular}
+}
+
+
+\centerline{
+\begin{NiceTabular}{| C{0.75cm} | P{7cm} | P{6cm} |}
+\hline
+H7 & Les résultats d'application de la méthode CREA peuvent être impactés par :
+& \Block{3-1}{Tester la méthode avec des documents hétérogènes et des contenus diversifiés afin d'évaluer la qualité des résultats \textit{[Voir scénarios n°2-4-5]}} \\
+\cline{1-2}
+H7a & La présence de documents hétérogènes dans la sélection initiale (articles de recherches, supports de cours, livres,...)
+& \\
+\cline{1-2}
+H7b & La présence de parties (section, chapitre, ...) hors sujet au sein d'un document
+& \\
+\cline{1-2}
+H7c & La nature du contenu des documents (images, listings du code, ...)
+& \\
+\hline
+\end{NiceTabular}
+}
+
+\vspace*{\fill}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bigskip
+%%%%%%%%%% =====> just for a better output
+\newpage
+
+\vspace{0.5cm}
+
+\centerline{
+\begin{tabular}{c p{12cm}}
+5 & Comment présenter les résultats de la méthode CREA afin d'améliorer l'exploitabilité pour un enseignant ? \\
+\end{tabular}
+}
+
+\centerline{
+\begin{NiceTabular}{| C{0.75cm} | P{7cm} | P{6cm} |}
+\hline
+H8 & Le graphe d'impact mutuel permet d'aider un enseignant en rendant certaines informations plus visuelles :
+& \Block{4-1}{Comparer plusieurs corpus documentaires: des corpus homogènes sur un seul sujet doivent montrer un ensemble de documents très rapprochés ou tous aussi éloignés les uns des autres, d'autres corpus contenant plusieurs sujets doivent montrer que des documents sont plus éloignés du sujet central traité par la majorité des documents  \textit{[Voir scénarios n°1-2-3-4-5]}} \\
+\cline{1-2}
+H8a & Le graphe d'impact mutuel permet de visualiser le contexte traité par le corpus documentaire
+& \\
+\cline{1-2}
+H8b & Le graphe d'impact mutuel permet de visualiser l'écart de chaque document par rapport au contexte (cf H3)
+& \\
+\cline{1-2}
+H8c & Le graphe d'impact mutuel n'est pas une représentation suffisante pour visualiser avec le maximum de précision les écarts entre documents
+& \\
+\hline
+\end{NiceTabular}
+}
+
+\centerline{
+\begin{NiceTabular}{| C{0.75cm} | P{7cm} | P{6cm} |}
+\hline
+H9 & La présentation de clusters de termes sous la forme de tableaux impose implicitement l'ordre de lecture
+& Utiliser des méthodes de visualisation de données (nuage de mots, ...) \textit{[Non traité/Voir discussions et conclusion]} \\
+\hline
+\end{NiceTabular}
+}
+
+\bigskip
+
+%%%
+Les travaux précédemment cités se concentrent soit sur des domaines trop éloignés (industrie alimentaire), soit sur des processus trop structurés où les tâches sont au c\oe{}ur d'un modèle, soit n'exploitent pas assez la sémantique des textes et des connaissances contenues.
+Des travaux existants~\cite{tang2016interactive} se sont intéressés à l'extraction de connaissances et leur analyse avec des techniques mathématiques d'analyse de données, en particulier avec l'\textit{analyse de concepts formels}, ou \textit{formal concept analysis} (FCA) en anglais.
+Notre contribution, la méthode CREA (\textit{\MyCREA}), y adjoint des métriques et visualisations issues de l'analyse de concepts formels étudiées dans d'autres travaux~\cite{jaffal2019aide} afin de pouvoir valider la réutilisation de fragments de processus et la vérification de la pertinence.
+Plusieurs scénarios d'utilisation sont possibles : construire un tout nouveau cours à partir de supports existants (des documents sont rassemblés et une structure de cours est proposée), mettre à jour son propre cours en le comparant avec les supports d'autres cours (une carte indique l'éloignement de son cours par rapport aux autres), voire en l'étoffant avec des notions issues d'articles de recherche du monde académique (des articles de recherche sont ajoutés à la base de documents insérés afin de proposer une structure plus étendue encore).
+
+\bigskip
+
+Nous avons également commencé à étudier l'aspect temporel en proposant succinctement parmi les perspectives un ordonnancement pour les séances générées.
+Les documents dont l'organisation est chronologique permettent d'en extraire non seulement des connaissances, mais également l'ordre de présentation de ces connaissances.
+L'ordonnancement temporel a déjà été étudié dans certains travaux~\cite{di2013mining}.
+Nous présentons cependant des résultats préliminaires d'une version adaptée à l'organisation temporelle de clusters de notions.
+Une extension à la contribution principale et une expérience sont présentées en conclusion pour ordonnancer partiellement les clusters précédemment générés.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage % Clean for pictures and tables %
+\newpage   % Clean for pictures and tables %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Plan du manuscrit}
+\label{section:Introduction:PlanManuscrit}
+
+
+La méthode CREA proposée dans cette thèse vise à répondre au problème de recherche grâce à deux de ses productions en sortie :
+
+\begin{itemize}
+\item une visualisation graphique permettant de déterminer la pertinence des documents en entrée les uns par rapport aux autres et selon le(s) sujet(s) traité(s),
+
+\item des regroupements de termes issus des documents représentant les notions à aborder dans le nouveau cours en construction.
+\end{itemize}
+
+
+\bigskip
+\vspace*{2cm}
+
+
+Le manuscrit de thèse est organisé comme suit :
+
+\begin{itemize}
+\item le chapitre~\ref{chapter:Introduction} a introduit le contexte sociétal et la problématique de recherche visée ;
+
+\item le chapitre~\ref{chapter:Contexte} présente une revue de la littérature concernant les domaines de la gestion des connaissances et des processus à forte intensité de connaissances, puis les techniques d'analyse de données utilisées pour la méthode CREA, et enfin les travaux connexes et similaires ;
+
+\item le chapitre~\ref{chapter:CREA} expose la méthode CREA en présentant tout d'abord le fonctionnement général et le cadre de travail, puis les deux phases de pré-traitement sémantique et d'analyse structurelle sont détaillées ;
+
+\item le chapitre~\ref{chapter:Evaluation} détaille la méthodologie d'évaluation, l'ensemble des expérimentations et leurs résultats en utilisant la méthode CREA dans plusieurs scénarios, puis discute ces résultats ;
+
+\item le chapitre~\ref{chapter:Conclusion} effectue une synthèse des contributions, usages possibles de la méthode CREA, et menaces de validité, puis nous proposons plusieurs perspectives pour chaque phase, et enfin nous présentons des résultats préliminaires concernant l'ordonnancement temporel des regroupements de termes afin de proposer un syllabus précis à l'enseignant.
+\end{itemize}

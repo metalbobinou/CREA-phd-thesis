@@ -1,0 +1,366 @@
+\documentclass[12pt,a4paper]{thesis}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[main=french]{babel}
+\usepackage{caption} % For making "french" tables & figures
+
+\usepackage[top=90pt, bottom=90pt, left=80pt, right=80pt]{geometry}			% Geometrie de la page
+\usepackage{fancyhdr} % Header/Footer
+\usepackage{changepage} % Local margins adjusting %adjustwidth
+
+\usepackage{lmodern} % ou toute autre fonte complète pour le français : kpfonts, fourier...
+\usepackage{xspace} % pour profiter du mécanisme
+\usepackage[np]{numprint} % si je dois écrire des nombres sans unités sinon
+% \usepackage{siunitx} % si je dois écrire des grandeurs avec unités
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{imakeidx}
+\usepackage[bottom]{footmisc} % always place footer at bottom of page
+
+\usepackage{minitoc} % Table of Contents local to a chapter
+\mtcselectlanguage{french} % Minitoc en francais
+
+\frenchbsetup{og=«,fg=»} % define pour guillemets français
+
+\usepackage{lipsum} % For Lorem Ipsum generation : \lipsum or \lipsum[2-4] paragraphes 2 a 4
+\usepackage{datetime} % pour \currenttime (affiche l'heure)
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ulem} % \sout pour barrer du texte
+
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{nicematrix} % Better arrays (for aligning cline content on multirows)
+
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash }m{#1}}
+
+\usepackage{array}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcolumntype{M}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % another L
+\newcolumntype{D}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}   % another C
+\newcolumntype{S}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}  % another R
+
+
+\usepackage{color}
+\definecolor{heavy-blue}{RGB}{0,0,150}
+%\definecolor{Gray}{gray}{0.9}
+%\definecolor{LightCyan}{rgb}{0.88,1,1}
+%\definecolor{olivine}{rgb}{0.6, 0.73, 0.45} % Vert clair
+%\definecolor{lightgreen}{rgb}{0.56, 0.93, 0.56}
+%\definecolor{lightcoral}{rgb}{0.94, 0.5, 0.5} % Rouge clair
+
+
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}} %%%% colonne " pour "bold" dans tableau
+
+
+\newcommand{\thickcline}[1]{%            %%%% Definit \thickhcline pour faire cline{x-y} "bold" dans tableau
+    \@thickcline #1\@nil%
+}
+
+\def\@thickcline#1-#2\@nil{%
+  \omit
+  \@multicnt#1%
+  \advance\@multispan\m@ne
+  \ifnum\@multicnt=\@ne\@firstofone{&\omit}\fi
+  \@multicnt#2%
+  \advance\@multicnt-#1%
+  \advance\@multispan\@ne
+  \leaders\hrule\@height1pt\hfill
+  \cr
+  \noalign{\vskip-1pt}%
+}
+
+
+\usepackage[pdftitle={CREA : Méthode d'analyse, d'adaptation et de réutilisation des processus à forte intensité de connaissances},
+	pdfsubject={CREA : Méthode d'analyse, d'adaptation et de réutilisation des processus à forte intensité de connaissances - cas d'utilisation dans l'enseignement supérieur en informatique},
+	pdfauthor={Fabrice BOISSIER},
+	pdfkeywords={Processus à forte intensité de connaissances; Adaptive case management; Gestion de cas; Réutilisation de connaissances; Extraction de connaissances; Analyse de concepts formels; Traitement automatique du langage; Numérisation de l'enseignement; Enseignement}]{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linktoc=section,
+	linkcolor=heavy-blue,
+	citecolor=heavy-blue,
+	filecolor=red,
+	urlcolor=blue
+}
+
+\usepackage{lastpage}
+
+% \TTBF (texte)
+%% Texte en ttfamily + textbf (TeleType + Bold Font)
+\newcommand{\TTBF}[1]{\texttt{\textbf{#1}}}
+
+% Command up ! Pour 20e siecle
+%\newcommand{\up}[1]{\textsuperscript{#1}}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor PyCATSHOO}
+
+\pagestyle{empty}
+
+\newenvironment{vcenterpage}
+{\newpage\vspace*{\fill}}
+{\vspace*{\fill}\par\pagebreak}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Header
+%%%%%%%%%%%%%%%%%%%%%%%
+%\lhead{\texttt{\chaptername~\thechapter}}			%Gauche Haut
+%\chead{}											%Centre Haut
+%\rhead{}											%Droite Haut
+%\lfoot{}											%Gauche Bas
+%\cfoot{\thepage}									%Centre Bas
+%\rfoot{}											%Droite Bas
+
+
+\fancypagestyle{IHA-fancy-style}{%
+  \fancyhf{}% Clear header and footer
+  %\fancyhead[LE,RO]{\slshape \rightmark}
+  %\fancyhead[LO,RE]{\slshape \leftmark}
+  %\fancyhead[LE,RO]{Blabla} % Gauche page paire, Droite page impaire
+  %\fancyhead[LO,RE]{Blob} % Droite page paire, Gauche page impaire
+  %\fancyhead[L]{\texttt{\chaptername~\thechapter}}
+  \fancyhead[L]{\texttt{\leftmark}} % \chaptermark crashes in fancyheader, use \leftmark instead
+  \fancyfoot[C]{\thepage\ / \pageref*{LastPage}} % Custom footer  % pagref : link   pageref* : no link
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage\ / \pageref{LastPage}}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+%----------------------------------------------------------------------------------------
+%   FOOTER FOOTNOTE PATCH  % Linked with usepackage[bottom]{footmisc}
+%----------------------------------------------------------------------------------------
+%
+\let\origfootrule\footrule
+\renewcommand{\footrule}{\iffootnote{}{\origfootrule}}
+\renewcommand\footnoterule{\origfootrule}
+%%%%%%% END FOOTER FOOTNOTE PATCH
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Caracteristiques de la Page Titre %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\maketitle{
+	\begin{titlepage}
+
+	\newgeometry{top=1cm,bottom=1cm,left=2cm,right=2cm}
+
+	\begin{center}
+	%%% LOGO PARIS 1 %%%
+	\includegraphics[scale=0.4]{logos/logo_coul_fr_cmjn.jpg}
+	\null\vskip 0.1cm%\vfill
+
+	\MakeUppercase{Thèse de Doctorat} \\
+	\MakeUppercase{de l'Université Paris 1 Panthéon - Sorbonne}
+	\null\vskip 0.3cm%\vfill
+	Préparée au sein du Centre de Recherche en Informatique (EA 1445)\\
+	à L'École Doctorale de Management Panthéon - Sorbonne (ED 559)
+	\null\vskip 0.8cm%\vfill
+
+	Présentée par : \\
+	\null\vskip 0.1cm%\vfill
+	{\Large \textbf{\MakeUppercase{Fabrice BOISSIER}} }
+	\null\vskip 0.8cm%\vfill
+
+	Pour l'obtention du grade de Docteur de L'Université Paris 1 Panthéon - Sorbonne \\
+	\null\vskip 0.8cm%\vfill
+
+	{\LARGE \textbf{\@title}}\\
+	\bigskip
+	{\Large \textbf{\textit{\@subtitle}}}
+
+	\null\vskip 0.3cm%\vfill
+	Spécialité : Informatique
+	\null\vskip 0.5cm%\vfill
+	Thèse présentée et soutenue publiquement à Paris, le 17 janvier 2022 \\
+	%\null\vskip 0.5cm%\vfill
+	Composition du jury :
+	\end{center}
+
+	\begin{adjustwidth}{-60pt}{-60pt} % Enlarge the margins only here {left}{right}  // OK : -50pt  -50pt
+	\begin{center}
+	%%\begin{table}[ht]
+	%%\centering
+	%%\resizebox{\textwidth}{!}{
+	{ \footnotesize
+	\begin{tabular}{l m{6.5cm} l}   %%% Comme il n'y aura que 4 membres externes du jury, l'espacement passera : & & \\ {l m{6cm} l}
+	\multirow{2}{*}{M. Guillaume CLEUZIOU} & Professeur, & \multirow{2}{*}{Rapporteur} \\
+	 & Université d'Orléans &  \\ % Professeur des Universités
+%	 & & \\
+	\multirow{2}{*}{M. Alain WEGMANN} & Professeur, & \multirow{2}{*}{Rapporteur} \\
+	 & École Polytechnique Fédérale de Lausanne &  \\ % Professeur Ordinaire
+	 & & \\
+	\multirow{2}{*}{Mme. Daniela GRIGORI} & Professeur, & \multirow{2}{*}{Examinatrice} \\
+	 & Université Paris Dauphine - PSL &  \\ % Professeur des Universités
+%	 & & \\
+	\multirow{2}{*}{M. Camille SALINESI} & Professeur, & \multirow{2}{*}{Examinateur} \\
+	 & Université Paris 1 Panthéon - Sorbonne &  \\ % Professeur des Universités
+	 & & \\
+	\multirow{2}{*}{Mme. Bénédicte LE GRAND} & Professeur, & \multirow{2}{*}{Directrice de Thèse} \\
+	 & Université Paris 1 Panthéon - Sorbonne &  \\ % Professeur des Universités
+%	 & & \\
+	\multirow{2}{*}{Mme. Irina RYCHKOVA} & Maître de Conférence, & \multirow{2}{*}{Co-Encadrante de Thèse} \\
+	 & Université Paris 1 Panthéon - Sorbonne &  \\ % Maître de Conférence
+	\end{tabular}
+	}
+	%%\end{table}
+	\end{center}
+	\end{adjustwidth}
+
+	\begin{center}
+	\null\vskip 0.8cm%\vfill
+	%{ \scriptsize Version du \today ~ (\currenttime) }
+	\end{center}
+
+	\restoregeometry
+
+	\end{titlepage}
+}
+
+
+%\newcommand{\up}[1]{\textsuperscript{#1}} %Definition de UP !
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INFORMATIONS VARIEES                                                      %%
+%%                                                                           %%
+%% Traduction des termes :                                                   %%
+%% Knowledge Intensive Process: Processus à Forte Intensité de Connaissances %%
+%% Knowledge Worker: Travailleur du Savoir (travailleur de la connaissance ?)%%
+%%                                                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\MyCREA}{Case REuse and Adaptation}
+
+%%%%%%%%%%%%%%%%
+
+
+
+\begin{document} % Problem with \author requires to begin document before \author
+
+\dominitoc % Initialization of minitoc / ToC local to chapters
+
+%------------------------------------------------------------------------------
+%	TITLE SECTION
+%------------------------------------------------------------------------------
+
+\title{CREA : Méthode d'analyse, d'adaptation et de réutilisation des processus à forte intensité de connaissances}
+
+\subtitle{cas d'utilisation dans l'enseignement supérieur en informatique}
+
+\author{Fabrice BOISSIER}
+
+\date{17 Janvier 2022}
+
+%------------------------------------------------------------------------------
+
+%\begin{document}
+\maketitle
+
+%\thispagestyle{empty}
+%%% FOR ALL INTRODUCTION PAGE STYLE EMPTY
+\pagestyle{empty}
+
+\newpage
+%%% GEOMETRY AND OTHERS ARE BROKEN BY THE SPECIAL TITLE
+\restoregeometry
+
+~\newpage % Seconde page vierge / 2e de couverture
+
+%------------------------------------------------
+\pagestyle{IHA-fancy-style}
+
+% Remerciements
+\input{0-Resume/Remerciements.tex}
+
+\newpage
+
+\pagestyle{IHA-fancy-style}
+
+% Abstract/Résumé
+\input{0-Resume/Resume.tex}
+
+%------------------------------------------------
+
+\newpage
+
+%% KEEP TABLE OF CONTENTS WITHOUT STYLE
+\pagestyle{empty}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+\tableofcontents
+
+\clearpage
+
+\listoffigures
+\listoftables
+
+%% REWRITE ONLY NOW THE FANCY-HEADER STYLE
+\cleardoublepage
+
+\pagestyle{IHA-fancy-style}
+
+% Introduction
+\input{1-Introduction/Introduction.tex}
+
+%------------------------------------------------
+
+% Etat de l'Art
+\input{2-Etat-de-l'Art/EtatDeLArt.tex}
+
+%------------------------------------------------
+
+% Méthode générale / Business Case / Comment l'utilisateur s'en sert
+% "Méthode CREA : Case REuse and Analyse"
+\input{3-Methode-CREA/MethodeCREA.tex}
+
+%------------------------------------------------
+
+% Expériences et Evaluations de la méthode (Méthodologie de Recherche + Données + Evaluations)
+% "Expériences / Evaluations"
+\input{4-Experiences/Experiences.tex}
+
+
+%------------------------------------------------
+
+% Conclusion
+\input{5-Conclusion/Conclusion.tex}
+
+%------------------------------------------------
+
+
+\cleardoublepage
+
+\phantomsection
+
+\addcontentsline{toc}{chapter}{Bibliographie}
+
+%\nocite{*}
+%
+\bibliography{my_bibliography}
+\bibliographystyle{plain}
+
+%------------------------------------------------------------------------------
+
+\newpage
+
+\pagestyle{empty}
+
+~\newpage
+
+% 4e de couverture = résumé FR et EN sur une seule page
+
+\input{0-Resume/Resumes_1_page.tex}
+
+\end{document}

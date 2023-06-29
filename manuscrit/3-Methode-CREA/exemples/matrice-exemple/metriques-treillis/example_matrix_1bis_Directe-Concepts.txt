@@ -1,0 +1,91 @@
+Concept (0) : 
+  level : 4
+  objects (0) : 
+  attributes (5) : C1 C2 C3 C4 C5 
+  parents concepts (5) : 1 2 3 4 5 
+  childs concepts (0) : 
+
+Concept (1) : 
+  level : 2
+  objects (1) : web 
+  attributes (2) : C2 C5 
+  parents concepts (2) : 6 7 
+  childs concepts (1) : 0 
+
+Concept (2) : 
+  level : 3
+  objects (1) : php 
+  attributes (3) : C1 C2 C4 
+  parents concepts (2) : 6 8 
+  childs concepts (1) : 0 
+
+Concept (3) : 
+  level : 2
+  objects (1) : sql 
+  attributes (2) : C3 C4 
+  parents concepts (2) : 9 10 
+  childs concepts (1) : 0 
+
+Concept (4) : 
+  level : 2
+  objects (1) : mysql 
+  attributes (2) : C4 C5 
+  parents concepts (2) : 7 10 
+  childs concepts (1) : 0 
+
+Concept (5) : 
+  level : 2
+  objects (1) : html 
+  attributes (2) : C1 C3 
+  parents concepts (2) : 9 11 
+  childs concepts (1) : 0 
+
+Concept (6) : 
+  level : 1
+  objects (2) : web php 
+  attributes (1) : C2 
+  parents concepts (1) : 12 
+  childs concepts (2) : 1 2 
+
+Concept (7) : 
+  level : 1
+  objects (2) : web mysql 
+  attributes (1) : C5 
+  parents concepts (1) : 12 
+  childs concepts (2) : 1 4 
+
+Concept (8) : 
+  level : 2
+  objects (2) : php apache 
+  attributes (2) : C1 C4 
+  parents concepts (2) : 10 11 
+  childs concepts (1) : 2 
+
+Concept (9) : 
+  level : 1
+  objects (2) : sql html 
+  attributes (1) : C3 
+  parents concepts (1) : 12 
+  childs concepts (2) : 3 5 
+
+Concept (10) : 
+  level : 1
+  objects (4) : php sql mysql apache 
+  attributes (1) : C4 
+  parents concepts (1) : 12 
+  childs concepts (3) : 3 4 8 
+
+Concept (11) : 
+  level : 1
+  objects (4) : php apache http html 
+  attributes (1) : C1 
+  parents concepts (1) : 12 
+  childs concepts (2) : 5 8 
+
+Concept (12) : 
+  level : 0
+  objects (7) : web php sql mysql apache http html 
+  attributes (0) : 
+  parents concepts (0) : 
+  childs concepts (5) : 6 7 9 10 11 
+
